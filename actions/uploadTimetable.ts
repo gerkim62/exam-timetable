@@ -60,6 +60,7 @@ async function uploadTimetable(formData: FormData) {
   let success = false;
   let errorMessage = "";
   try {
+    // throw new Error("This is a test error");
     const uploaderName = formData.get("uploaderName");
     const htmlFile = formData.get("htmlFile");
 
@@ -83,7 +84,7 @@ async function uploadTimetable(formData: FormData) {
 
     const tablesAsJson = tabletojson.convert(htmlContent);
 
-    console.log(tablesAsJson[0]);
+    // console.log(tablesAsJson[0]);
     // example
     // {
     //     '0': '2023/2024.2',
@@ -122,6 +123,15 @@ async function uploadTimetable(formData: FormData) {
       const message = `${timetableExists.title} for ${timetableExists.semester} already uploaded by ${timetableExists.uploaderName} on ${timeInEAT}`;
       throw new Error(message);
     }
+
+    // delete all courses and timetable before adding new ones
+    console.log(`deleting all timetables ...`);
+    await prisma.timetable.deleteMany({});
+    console.log(`done deleting all timetables ...`);
+
+    console.log(`deleting all courses ...`);
+    await prisma.course.deleteMany({});
+    console.log(`done deleting all courses ...`);
 
     // example
     // {
@@ -226,7 +236,7 @@ async function uploadTimetable(formData: FormData) {
       });
     });
 
-    // console.log(courses);
+    console.log(courses);
 
     // this code was used to check for duplicate courses but now we are using the courseAlreadyAdded function before adding a course to the courses array so this may be irrelevant
     // const groupedCourses = courses.reduce((acc, course) => {
@@ -271,9 +281,11 @@ async function uploadTimetable(formData: FormData) {
   }
 
   if (success) {
-    redirect("/upload_success");
+    redirect("/timetable/upload/success");
   } else {
-    redirect(`/error?message=${errorMessage ?? "An error occurred"}`);
+    redirect(
+      `/timetable/upload/failed?message=${errorMessage ?? "An error occurred"}`
+    );
   }
 }
 
