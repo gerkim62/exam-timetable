@@ -1,4 +1,4 @@
-import Link from "next/link";
+import CustomLink from "@/components/CustomLink";
 import React from "react";
 
 import { FaArrowRight, FaCalendarAlt } from "react-icons/fa";
@@ -14,12 +14,12 @@ const LandingPage = () => {
         ease.
       </p>
       <div className="flex flex-col items-center mb-8">
-        <Link
+        <CustomLink
           href="/timetable/courses/select"
           className="bg-white text-purple-700 font-semibold py-2 px-4 rounded-lg text-lg shadow-md hover:bg-purple-600 hover:text-white transition duration-300 ease-in-out"
         >
           Select Your Courses Now <FaArrowRight className="inline ml-2" />
-        </Link>
+        </CustomLink>
       </div>
     </div>
   );

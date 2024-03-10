@@ -1,3 +1,4 @@
+import CustomLink from "@/components/CustomLink";
 import Link from "next/link";
 import React from "react";
 import { FaArrowRight } from "react-icons/fa6";
@@ -14,12 +15,12 @@ function TimetableUploadedPage() {
           You can now proceed to select your courses.
         </p>
         <div className="flex justify-center">
-          <Link
+          <CustomLink
             href="/timetable/courses/select"
             className="flex items-center justify-center px-6 py-3 bg-gradient-to-br from-pink-400 to-purple-500 text-white shadow-md hover:from-purple-500 rounded  hover:to-pink-400 transition duration-300 ease-in-out"
           >
             Select Courses <FaArrowRight className="ml-4" />
-          </Link>
+          </CustomLink>
         </div>
       </div>
     </div>

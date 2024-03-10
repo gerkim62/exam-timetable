@@ -1,11 +1,11 @@
 "use client";
 
 import { Course } from "@prisma/client";
-import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState, useTransition } from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import Select, { MultiValue } from "react-select";
+import CustomLink from "./CustomLink";
 
 type Props = {
   courses: Course[];
@@ -91,7 +91,7 @@ const CoursesSelector = ({ courses }: Props) => {
         }}
       />
       <div className="flex justify-center mt-6">
-        <Link
+        <CustomLink
           onClick={(e) => {
             if (selectedCourseCodes.length === 0) {
               e.preventDefault();
@@ -105,7 +105,7 @@ const CoursesSelector = ({ courses }: Props) => {
           className="px-6 py-3 bg-gradient-to-br from-pink-400 to-purple-500 text-white shadow-md hover:from-purple-500 rounded  hover:to-pink-400 transition duration-300 ease-in-out flex items-center justify-center"
         >
           View Timetable <FaArrowRight className="ml-4" />
-        </Link>
+        </CustomLink>
       </div>
     </>
   );

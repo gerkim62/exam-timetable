@@ -20,13 +20,20 @@ export default function RootLayout({
       <body
         className={`${openSansFont.className} bg-gradient-to-br  from-purple-400 to-pink-600 text-white`}
       >
-        <Navbar items={
-          [
-            { href: "/", label: "Home" },
-            { href: "/about", label: "About" },
-            { href: "/contact", label: "Contact" },
-          ]
-        }/>
+        <Navbar
+          items={[
+            { href: "/", label: "Go to Home" },
+
+            {
+              href: "/timetable/courses/select",
+              label: "Select Courses",
+            },
+            {
+              href: "/timetable/upload",
+              label: "Upload Timetable",
+            },
+          ]}
+        />
         {children}
       </body>
     </html>

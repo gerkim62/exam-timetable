@@ -1,5 +1,6 @@
 import React from "react";
-import Link from "next/link";
+import CustomLink from "@/components/CustomLink";
+
 import { FaArrowLeft } from "react-icons/fa6";
 
 function ErrorPage({ searchParams }: { searchParams?: { message?: string } }) {
@@ -16,12 +17,12 @@ function ErrorPage({ searchParams }: { searchParams?: { message?: string } }) {
           Please go back and try uploading timetable again.
         </p>
         <div className="flex justify-center">
-          <Link
+          <CustomLink
             href="/timetable/upload"
             className="flex items-center justify-center px-6 py-3 bg-gradient-to-br from-pink-400 to-purple-500 text-white shadow-md hover:from-purple-500 rounded  hover:to-pink-400 transition duration-300 ease-in-out"
           >
             <FaArrowLeft className="mr-4" /> Go back
-          </Link>
+          </CustomLink>
         </div>
       </div>
     </div>
